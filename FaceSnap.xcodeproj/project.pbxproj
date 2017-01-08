@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		D22A87871E2175BB007F508A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87861E2175BB007F508A /* AppDelegate.swift */; };
-		D22A87891E2175BB007F508A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87881E2175BB007F508A /* ViewController.swift */; };
-		D22A878C1E2175BB007F508A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D22A878A1E2175BB007F508A /* Main.storyboard */; };
+		D22A87891E2175BB007F508A /* PhotoListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87881E2175BB007F508A /* PhotoListController.swift */; };
 		D22A878F1E2175BB007F508A /* FaceSnap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D22A878D1E2175BB007F508A /* FaceSnap.xcdatamodeld */; };
 		D22A87911E2175BB007F508A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D22A87901E2175BB007F508A /* Assets.xcassets */; };
 		D22A87941E2175BB007F508A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D22A87921E2175BB007F508A /* LaunchScreen.storyboard */; };
 		D22A879F1E2175BB007F508A /* FaceSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A879E1E2175BB007F508A /* FaceSnapTests.swift */; };
 		D22A87AA1E2175BB007F508A /* FaceSnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87A91E2175BB007F508A /* FaceSnapUITests.swift */; };
+		D22A87B81E217AF8007F508A /* MediaPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87B71E217AF8007F508A /* MediaPickerManager.swift */; };
+		D22A87BE1E2185D5007F508A /* PhotoFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87BD1E2185D5007F508A /* PhotoFilterController.swift */; };
+		D22A87C01E21A996007F508A /* FilteredImageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87BF1E21A996007F508A /* FilteredImageBuilder.swift */; };
+		D22A87C21E229530007F508A /* FilteredImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22A87C11E229530007F508A /* FilteredImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +40,7 @@
 /* Begin PBXFileReference section */
 		D22A87831E2175BB007F508A /* FaceSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22A87861E2175BB007F508A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D22A87881E2175BB007F508A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D22A878B1E2175BB007F508A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D22A87881E2175BB007F508A /* PhotoListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListController.swift; sourceTree = "<group>"; };
 		D22A878E1E2175BB007F508A /* FaceSnap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FaceSnap.xcdatamodel; sourceTree = "<group>"; };
 		D22A87901E2175BB007F508A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D22A87931E2175BB007F508A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		D22A87A51E2175BB007F508A /* FaceSnapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceSnapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22A87A91E2175BB007F508A /* FaceSnapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceSnapUITests.swift; sourceTree = "<group>"; };
 		D22A87AB1E2175BB007F508A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D22A87B71E217AF8007F508A /* MediaPickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPickerManager.swift; sourceTree = "<group>"; };
+		D22A87BD1E2185D5007F508A /* PhotoFilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilterController.swift; sourceTree = "<group>"; };
+		D22A87BF1E21A996007F508A /* FilteredImageBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredImageBuilder.swift; sourceTree = "<group>"; };
+		D22A87C11E229530007F508A /* FilteredImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +105,11 @@
 		D22A87851E2175BB007F508A /* FaceSnap */ = {
 			isa = PBXGroup;
 			children = (
+				D22A87BC1E218566007F508A /* Model */,
+				D22A87BB1E218556007F508A /* View */,
+				D22A87BA1E218543007F508A /* Controller */,
+				D22A87B91E21852D007F508A /* Helpers */,
 				D22A87861E2175BB007F508A /* AppDelegate.swift */,
-				D22A87881E2175BB007F508A /* ViewController.swift */,
-				D22A878A1E2175BB007F508A /* Main.storyboard */,
 				D22A87901E2175BB007F508A /* Assets.xcassets */,
 				D22A87921E2175BB007F508A /* LaunchScreen.storyboard */,
 				D22A87951E2175BB007F508A /* Info.plist */,
@@ -126,6 +134,39 @@
 				D22A87AB1E2175BB007F508A /* Info.plist */,
 			);
 			path = FaceSnapUITests;
+			sourceTree = "<group>";
+		};
+		D22A87B91E21852D007F508A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D22A87BF1E21A996007F508A /* FilteredImageBuilder.swift */,
+				D22A87B71E217AF8007F508A /* MediaPickerManager.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		D22A87BA1E218543007F508A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D22A87BD1E2185D5007F508A /* PhotoFilterController.swift */,
+				D22A87881E2175BB007F508A /* PhotoListController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D22A87BB1E218556007F508A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D22A87C11E229530007F508A /* FilteredImageCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D22A87BC1E218566007F508A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +275,6 @@
 			files = (
 				D22A87941E2175BB007F508A /* LaunchScreen.storyboard in Resources */,
 				D22A87911E2175BB007F508A /* Assets.xcassets in Resources */,
-				D22A878C1E2175BB007F508A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D22A87891E2175BB007F508A /* ViewController.swift in Sources */,
+				D22A87B81E217AF8007F508A /* MediaPickerManager.swift in Sources */,
+				D22A87891E2175BB007F508A /* PhotoListController.swift in Sources */,
 				D22A878F1E2175BB007F508A /* FaceSnap.xcdatamodeld in Sources */,
 				D22A87871E2175BB007F508A /* AppDelegate.swift in Sources */,
+				D22A87C01E21A996007F508A /* FilteredImageBuilder.swift in Sources */,
+				D22A87BE1E2185D5007F508A /* PhotoFilterController.swift in Sources */,
+				D22A87C21E229530007F508A /* FilteredImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +341,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D22A878A1E2175BB007F508A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D22A878B1E2175BB007F508A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D22A87921E2175BB007F508A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -486,6 +522,7 @@
 				D22A87B01E2175BB007F508A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D22A87B11E2175BB007F508A /* Build configuration list for PBXNativeTarget "FaceSnapTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +531,7 @@
 				D22A87B31E2175BB007F508A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D22A87B41E2175BB007F508A /* Build configuration list for PBXNativeTarget "FaceSnapUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +540,7 @@
 				D22A87B61E2175BB007F508A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

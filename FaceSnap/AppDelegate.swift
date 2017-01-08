@@ -16,7 +16,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Create project window that will enable to have UI screen. 
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // Guard statement to ensure Window property is not nil. 
+        
+        guard let window = window else { return false }
+        
+        // Set window backgroundColor to white.
+        
+        window.backgroundColor = .whiteColor()
+        
+        // Create instance of PhotoListController
+        
+        let photoListController = PhotoListController()
+        
+        // Embed photoListController as root view controller in navigation controller. 
+        
+        let navigationController = UINavigationController(rootViewController: photoListController)
+        
+        window.rootViewController = navigationController
+        
+        // Method makes window the key window and makes it visible on screen. 
+        
+        window.makeKeyAndVisible()
+        
+        
+        
         return true
     }
 
