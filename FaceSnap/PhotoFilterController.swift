@@ -188,9 +188,12 @@ extension PhotoFilterController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // Method to add button that will allow user to add information to selected photo. 
+    // Method to add button that will allow user to add information to selected photo.
     
     @objc private func presentMetadataController() {
+        
+        let photoMetadataController = PhotoMetadataController(photo: self.mainImage)
+        self.navigationController?.pushViewController(photoMetadataController, animated: true)
         
     }
 }
