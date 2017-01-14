@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PhotoListController: UIViewController {
     
@@ -161,9 +162,44 @@ extension PhotoListController {
         
         // Create sort controller
         
-        let sortController = PhotoSortListController(dataSource: tagDataSource, sortItemSelector: sortItemSelector) 
+        let sortController = PhotoSortListController(dataSource: tagDataSource, sortItemSelector: sortItemSelector)
         
-        // Create navigation controller. 
+        // Assign closure to onSortSelection.
+        
+        sortController.onSortSelection = { checkedItems in
+            
+            // Check if checkedItems set is nil, if not run predicates code.
+            
+            if !checkedItems.isEmpty {
+                var predicates = [NSPredicate]()
+                
+                // Iterate through checked items set, grab each tag, and create a predicate.
+                
+                for tag in checkedItems {
+                    
+                    // Create predicate that limits photos returned to a particular tag title.
+                    
+                    let predicate = NSPredicate(format: "%K CONTAINS %@", "tags.title", tag.title)
+                    
+                    // Append predicate to predicates array.
+                    
+                    predicates.append(predicate)
+                }
+                
+                // Create compound predicate.
+                
+                let compoundPredicate = NSCompoundPredicate(type: .OrPredicateType, subpredicates: predicates)
+                
+                // Call fetch request on proper data source. 
+                
+                self.dataSource.performFetch(withPredicate: compoundPredicate) 
+            } else {
+                self.dataSource.performFetch(withPredicate: nil) 
+            }
+            
+        }
+        
+        // Create navigation controller.
         
         let navigationController = UINavigationController(rootViewController: sortController)
         

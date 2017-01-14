@@ -33,6 +33,23 @@ class PhotoFetchedResultsController: NSFetchedResultsController, NSFetchedResult
         }
     }
     
+    // Call method every time we dismiss sort controller.
+    
+    func performFetch(withPredicate predicate: NSPredicate?) {
+        
+        // Use class method to delete cached data. 
+        
+        NSFetchedResultsController.deleteCacheWithName(nil)
+        
+        // Mofify predicate on fetch request. 
+        
+        fetchRequest.predicate = predicate
+        
+        // Retrieve new data. 
+        
+        executeFetch()
+    }
+    
     // MARK: - NSFetchedResultsControllerDelegate 
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
