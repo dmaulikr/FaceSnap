@@ -195,6 +195,14 @@ extension PhotoMetadataController {
     
     @objc private func savePhotoWithMetadata() {
         
+        let tags = tagsFromTextField()
+        Photo.photoWith(photo, tags: tags, location: location)
+        
+        // Save changes in the context.
+        
+        CoreDataController.save()
+        dismissViewControllerAnimated(true, completion: nil) 
+        
     }
 }
 

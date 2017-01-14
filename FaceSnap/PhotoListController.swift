@@ -33,15 +33,47 @@ class PhotoListController: UIViewController {
         manager.delegate = self
         return manager
     }()
+    
+    // Create instance of PhotoDataSource, so that are photos have a data source.
+    
+    lazy var dataSource: PhotoDataSource = {
+        return PhotoDataSource(fetchRequest: Photo.allPhotosRequest, collectionView: self.collectionView)
+    }()
+    
+    // Create collection view flow layout.
+    
+    lazy var collectionView: UICollectionView = {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let paddingDistance: CGFloat = 16.0
+        let itemSize = (screenWidth - paddingDistance)/2.0
+        
+        collectionViewLayout.itemSize = CGSize(width: itemSize, height: itemSize)
+        
+        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionViewLayout)
+        collectionView.backgroundColor = .whiteColor()
+        collectionView.registerClass(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
+        
+        return collectionView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        collectionView.dataSource = dataSource
+        self.automaticallyAdjustsScrollViewInsets = false 
     }
     
     // MARK: - Layout
     
     override func viewWillLayoutSubviews() {
+        
+        // Add collection view as a subview. 
+        
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false 
         
         // Camera Button Layout
         
@@ -49,6 +81,12 @@ class PhotoListController: UIViewController {
         cameraButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activateConstraints([
+            
+            // Layout Code
+            collectionView.leftAnchor.constraintEqualToAnchor(view.leftAnchor),
+            collectionView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor),
+            collectionView.rightAnchor.constraintEqualToAnchor(view.rightAnchor),
+            collectionView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor),
             cameraButton.leftAnchor.constraintEqualToAnchor(view.leftAnchor),
             cameraButton.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor),
             cameraButton.rightAnchor.constraintEqualToAnchor(view.rightAnchor),
