@@ -13,6 +13,17 @@ class Tag: NSManagedObject {
     
     static let entityName = "\(Tag.self)"
     
+    static var allTagsRequest: NSFetchRequest = {
+        
+        // Create NSFetchRequest
+        
+        let request = NSFetchRequest(entityName: Tag.entityName)
+        
+        // Sort tags by title. 
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        return request
+    }() 
+    
     // Class method to return instance of tag given a title.
     
     class func tag(withTitle title: String) -> Tag {

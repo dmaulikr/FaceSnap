@@ -60,7 +60,7 @@ class PhotoListController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupNavigationBar()
         
         collectionView.dataSource = dataSource
         self.automaticallyAdjustsScrollViewInsets = false 
@@ -129,6 +129,46 @@ extension PhotoListController: MediaPickerManagerDelegate {
         manager.dismissImagePickerController(animated: true) {
             self.presentViewController(navigationController, animated: true, completion: nil) 
         }
+    }
+}
+
+// MARK: - Navigation 
+
+extension PhotoListController {
+    
+    // Set up method to set buttons up. 
+    
+    private func setupNavigationBar() {
+        
+        // Create a bar button item. 
+        
+        let sortTagsButton = UIBarButtonItem(title: "Tags", style: .Plain, target: self, action: #selector(PhotoListController.presentSortController))
+        
+        // Method that takes array of buttons. 
+        
+        navigationItem.setRightBarButtonItems([sortTagsButton], animated: true)
+    }
+    
+    @objc private func presentSortController() {
+        
+        // Create tags data source
+        
+        let tagDataSource = SortableDataSource<Tag>(fetchRequest: Tag.allTagsRequest, managedObjectContext: CoreDataController.sharedInstance.managedObjectContext)
+        
+        // Create instance of sortItemSelector. 
+        
+        let sortItemSelector = SortItemSelector(sortItems: tagDataSource.results)
+        
+        // Create sort controller
+        
+        let sortController = PhotoSortListController(dataSource: tagDataSource, sortItemSelector: sortItemSelector) 
+        
+        // Create navigation controller. 
+        
+        let navigationController = UINavigationController(rootViewController: sortController)
+        
+        presentViewController(navigationController, animated: true, completion: nil) 
+        
     }
 }
 
